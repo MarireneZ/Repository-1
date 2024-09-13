@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="icon" href="../favicon.gif" type="image/gif" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Form | SV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body class="bg-light">
+  <div id="loader" class="text-center text-dark position-absolute" style="top: 40%; width: 100%;">
+    <div class="spinner-border" role="status" style="width: 8vmax; height: 8vmax;">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <br />
+    <br />
+    <strong>Loading...</strong>
+  </div>
+
+  <div id="content" class="d-none">
+    <div class="bg-dark title sticky-top">
+      <h1 class="text-light text-center pt-3 pb-3">SV Hackcheck Form</h1>
+    </div>
+    <div class="w-100 pt-3 text-center">If you need help filling out this form, ask in #hackcheck-discussion.</div>
+    <div class="text-dark container" style="max-width: 700px;">
+      <br />
+      <form>
+        <div class="form-group">
+          <div class="row">
+            <!-- Game Version -->
+            <div class="col">
+              <div class="form-group">
+                <label for="gameVersion">Game Version</label>
+                <select class="form-control" id="gameVersion">
+                  <option value="SwSh">Sword &amp; Shield</option>
+                  <option value="SV" selected>Scarlet &amp; Violet</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <small id="gameversionDesc" class="form-text text-muted">Which game is the Pok&eacute;mon currently in? If it is not in any of these options, then we don't hackcheck it.</small>
+        </div>
+        <!-- Species -->
+        <div class="form-group">
+          <div class="row">
+            <div class="col">
+              <label for="species">Pok&eacute;mon Species</label>
+              <select class="form-control" id="species">
+                <option value=" ">Select one...</option>
+              </select>
+            </div>
+
+            <!-- Form  -->
+
+            <div id="form-container" class="col d-none">
+              <label for="forms">Pok&eacute;mon Form</label>
+              <select class="form-control" id="forms">
+                <option value=" ">Select one...</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gender -->
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <select class="form-control" id="gender">
+            <option value=" ">Select One...</option>
+            <option value="M">Male (&#x2642;)</option>
+            <option value="F">Female (&#x2640;)</option>
+            <option value="-">Genderless</option>
+          </select>
+        </div>
+
+        <!-- OT -->
+        <div class="form-group">
+          <label for="ot">OT Name</label>
+          <input class="form-control" type="text" id="ot" placeholder="Ash (Case Sensitive)">
+        </div>
+
+        <!-- TID -->
+        <div class="form-group">
+          <label for="tid">Trainer ID</label>
+          <input class="form-control" type="text" id="tid" placeholder="123456">
+        </div>
+
+        <!-- Level -->
+        <div class="form-group">
+          <label for="level">Level</label>
+          <input class="form-control" type="text" id="level" placeholder="Level" value="100">
+        </div>
+
+        <!-- IVs -->
+        <div class="form-group">
+          <div class="form-row">
+            <div class="col">
+              <label for="hp">HP IV</label>
+              <select class="form-control" id="hp">
+                <option value=" ">-</option>
+                <option value="HT">Hyper Trained</option>
+                <option value="B">Best</option>
+                <option value="F">Fantastic</option>
+                <option value="VG">Very Good</option>
+                <option value="PG">Pretty Good</option>
+                <option value="D">Decent</option>
+                <option value="NG">No Good</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="atk">Atk IV</label>
+              <select class="form-control" id="atk">
+                <option value=" ">-</option>
+                <option value="HT">Hyper Trained</option>
+                <option value="B">Best</option>
+                <option value="F">Fantastic</option>
+                <option value="VG">Very Good</option>
+                <option value="PG">Pretty Good</option>
+                <option value="D">Decent</option>
+                <option value="NG">No Good</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="def">Def IV</label>
+              <select class="form-control" id="def">
+                <option value=" ">-</option>
+                <option value="HT">Hyper Trained</option>
+                <option value="B">Best</option>
+                <option value="F">Fantastic</option>
+                <option value="VG">Very Good</option>
+                <option value="PG">Pretty Good</option>
+                <option value="D">Decent</option>
+                <option value="NG">No Good</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="spa"><span class="d-block d-sm-block d-md-none">Sp Atk</span><span class="d-none d-md-block d-lg-block d-xl-block">Sp. Atk IV</span></label>
+              <select class="form-control" id="spa">
+                <option value=" ">-</option>
+                <option value="HT">Hyper Trained</option>
+                <option value="B">Best</option>
+                <option value="F">Fantastic</option>
+                <option value="VG">Very Good</option>
+                <option value="PG">Pretty Good</option>
+                <option value="D">Decent</option>
+                <option value="NG">No Good</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="spd"><span class="d-block d-sm-block d-md-none">Sp Def</span><span class="d-none d-md-block d-lg-block d-xl-block">Sp. Def IV</span></label>
+              <select class="form-control" id="spd">
+                <option value=" ">-</option>
+                <option value="HT">Hyper Trained</option>
+                <option value="B">Best</option>
+                <option value="F">Fantastic</option>
+                <option value="VG">Very Good</option>
+                <option value="PG">Pretty Good</option>
+                <option value="D">Decent</option>
+                <option value="NG">No Good</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="spe">Spe IV</label>
+              <select class="form-control" id="spe">
+                <option value=" ">-</option>
+                <option value="HT">Hyper Trained</option>
+                <option value="B">Best</option>
+                <option value="F">Fantastic</option>
+                <option value="VG">Very Good</option>
+                <option value="PG">Pretty Good</option>
+                <option value="D">Decent</option>
+                <option value="NG">No Good</option>
+              </select>
+            </div>
+          </div>
+          <small id="ivDesc" class="form-text text-muted">
+            These descriptions can be found using the Judge feature in your PC or HOME Premium.<br />
+            31: Best | 30: Fantastic | 26-29: Very Good | 16-25: Pretty Good | 1-15: Decent | 0: No Good
+          </small>
+        </div>
+
+        <!-- Shiny -->
+        <div class="form-group">
+          <label for="shiny-radio-container">Shiny?</label>
+          <div id="shiny-radio-container">
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="nonShiny" name="shinyRadioButton" class="custom-control-input" checked="true">
+              <label class="custom-control-label" for="nonShiny">Not Shiny</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="normalShiny" name="shinyRadioButton" class="custom-control-input">
+              <label class="custom-control-label" for="normalShiny">Shiny</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="starShiny" name="shinyRadioButton" class="custom-control-input">
+              <label class="custom-control-label" for="starShiny">&#x2605; Star Shiny</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="squareShiny" name="shinyRadioButton" class="custom-control-input">
+              <label class="custom-control-label" for="squareShiny">&#x25A0; Square Shiny</label>
+            </div>
+          </div>
+          <small id="shinyDesc" class="form-text text-muted">Sword and Shield have two different shiny animations. If you're unsure about your Pokémon's shiny type, send it out in a battle to watch the animation. Star sparkles = star shiny, square
+            sparkles = square shiny. Don't assume based on the icon in the summary!<br />
+            For Scarlet and Violet, just select shiny if it is shiny.</small>
+        </div>
+
+        <!-- Ball -->
+        <div class="form-group">
+          <label for="ball">Pok&eacute;ball</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <span id="ball-icon"></span>
+              </div>
+            </div>
+            <select class="form-control" id="ball">
+              <option value=" ">Select one...</option>
+              <option value="Beast">Beast</option>
+              <option value="Cherish">Cherish</option>
+              <option value="Dive">Dive</option>
+              <option value="Dream">Dream</option>
+              <option value="Dusk">Dusk</option>
+              <option value="Fast">Fast</option>
+              <option value="Friend">Friend</option>
+              <option value="Great">Great</option>
+              <option value="Heal">Heal</option>
+              <option value="Heavy">Heavy</option>
+              <option value="Level">Level</option>
+              <option value="Love">Love</option>
+              <option value="Lure">Lure</option>
+              <option value="Luxury">Luxury</option>
+              <option value="Master">Master</option>
+              <option value="Moon">Moon</option>
+              <option value="Nest">Nest</option>
+              <option value="Net">Net</option>
+              <option value="Pok&eacute;">Pok&eacute;</option>
+              <option value="Premier">Premier</option>
+              <option value="Quick">Quick</option>
+              <option value="Repeat">Repeat</option>
+              <option value="Safari">Safari</option>
+              <option value="Strange">Strange</option>
+              <option value="Sport">Sport</option>
+              <option value="Timer">Timer</option>
+              <option value="Ultra">Ultra</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- History -->
+        <div class="form-group">
+          <label for="previous">History</label>
+          <input class="form-control" type="text" id="previous" placeholder="NiceTrader#1234 from the &quot;Sword and Shield&quot; Discord server">
+          <small id="historyDesc" class="form-text text-muted">What user did you get this Pok&eacute;mon from? Include Discord name, tag, and ID if possible, or a username from a website.<br />
+            State the method if you don't remember the other trader, such as &quot;HOME GTS&quot; or &quot;random link trade&quot;.</small>
+        </div>
+
+        <!-- Ribbons/Marks -->
+        <div class="form-group">
+          <label for="ribmark" style="margin-bottom: 0;">Ribbons &amp; Marks</label>
+          <small id="ribbonDesc" class="form-text text-muted" style="margin-bottom: 8px;">
+            Please either type in the box OR use the checkboxes below! You can find this on the last page of the Pok&eacute;mon summary.<br />
+            In Scarlet and Violet, the Pok&eacute;mon needs to be in your main party to view the ribbons/marks.<br />
+            Leave this blank if it doesn't have any!
+          </small>
+          <input class="form-control" type="text" id="ribmark" placeholder="Ribbon/Mark Name">
+          <br />
+          <p>
+            <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#ribbons-collapse" aria-expanded="false" aria-controls="ribbons-collapse">
+              Toggle Ribbons
+            </button>
+            <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#marks-collapse" aria-expanded="false" aria-controls="marks-collapse">
+              Toggle Marks
+            </button>
+          </p>
+          <!-- Ribbons -->
+          <div class="collapse" id="ribbons-collapse">
+            <div>
+              <p>Ribbons</p>
+              <button class="btn btn-dark btn-sm" type="button" id="select-all-ribbons">
+                Select All
+              </button>
+              <button class="btn btn-dark btn-sm" type="button" id="deselect-all-ribbons">
+                Select None
+              </button>
+            </div>
+            <hr />
+            <!-- Champion Ribbons -->
+            <div>
+              <div class="form-row">
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input ribbon-check" type="checkbox" value="" id="champion-ribbon">
+                    <label class="form-check-label" for="champion-ribbon">
+                      <img alt="Champion Ribbon" src="https://raw.githubusercontent.com/msikma/pokesprite/master/misc/ribbon/gen8/champion-ribbon.png" width="32" height="32">
+                      Champion
+                    </label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input ribbon-check" type="checkbox" value="" id="sinnoh-champion-ribbon">
+                    <label class="form-check-label" for="sinnoh-champion-ribbon">
+                      <img alt="Sinnoh Champion Ribbon" src="https://raw.githubusercontent.com/msikma/pokesprite/master/misc/ribbon/gen8/sinnoh-champion-ribbon.png" width="32" height="32">
+                      Sinnoh Champion
+                    </label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input ribbon-check" type="checkbox" value="" id="kalos-champion-ribbon">
+                    <label class="form-check-label" for="kalos-champion-ribbon">
+                      <img alt="Kalos Champion Ribbon" src="https://raw.githubusercontent.com/msikma/pokesprite/master/misc/ribbon/gen8/kalos-champion-ribbon.png" width="32" height="32">
+                      Kalos Champion
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input ribbon-check" type="checkbox" value="" id="hoenn-champion-ribbon">
+                    <label class="form-check-label" for="hoenn-champion-ribbon">
+                      <img alt="Hoenn Champion Ribbon" src="https://raw.githubusercontent.com/msikma/pokesprite/master/misc/ribbon/gen8/hoenn-champion-ribbon.png" width="32" height="32">
+                      Hoenn Champion
+                    </label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input ribbon-check" type="checkbox" value="" id="alola-champion-ribbon">
+                    <label class="form-check-label" for="alola-champion-ribbon">
+                      <img alt="Alola Champion Ribbon" src="https://raw.githubusercontent.com/msikma/pokesprite/master/misc/ribbon/gen8/alola-champion-ribbon.png" width="32" height="32">
+                      Alola Champion
+                    </label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input ribbon-check" type="checkbox" value="" id="galar-champion-ribbon">
+                    <label class="form-check-label" for="galar-champion-ribbon">
+                      <img alt="Galar Champion Ribbon" src="https://raw.githubusercontent.com/msikma/pokesprite/master/misc/ribbon/gen8/galar-champion-ribbon.png" width="32" height="32">
+                      Galar Champion
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input ribbon-check" type="checkbox" value="" id="paldea-champion-ribbon">
+                    <label class="form-check-label" for="paldea-champion-ribbon">
+                      <img alt="Paldea Champion Ribbon" src="../resources/images/Paldea_Champion_Ribbon_IX.png" width="32" height="32">
+                      Paldea Champion
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <!-- Contest Ribbons -->
+            <div>
+              <div class="form-row">
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input ribbon-check" type="checkbox" value="" id="coolness-master-ribbon">
+                    <label class="form-check-label" for="coolness-master-ribbon">
+                      <img alt="Coolness Master Ribbon" src="https://raw.githubusercontent.com/msikma/pokesprite/master/misc/ribbon/gen8/coolness-master-ribbon.png" width="32" height="32">
+                      Coolness Master
+                    </label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input ribbon-check" type="checkbox" value="" id="beauty-master-ribbon">
+                    <label class="form-check-label" for="beauty-master-ribbon">
+                      <img alt="Beauty Master Ribbon" src="https://raw.githubusercontent.com/msikma/pokesprite/master/misc/ribbon/gen8/beauty-master-ribbon.png" width="32" height="32">
+                      Beauty Master
+                    </label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input ribbon-check" type="checkbox" value="" id="cuteness-master-ribbon">
+                    <label class="form-check-label" for="cuteness-master-ribbon">
+                      <img alt="Cuteness Master Ribbon" src="https://raw.githubusercontent.com/msikma/pokesprite/master/misc/ribbon/gen8/cuteness-master-ribbon.png" width="32" height="32">
+                      Cuteness Master
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input ribbon-check" type="checkbox" value="" id="cleverness-master-ribbon">
+                    <label class="form-check-label" for="cleverness-master-ribbon">
+                      <img alt="Coolness Maste
